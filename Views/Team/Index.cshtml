@@ -1,0 +1,52 @@
+﻿@using Test2.ViewModels;
+
+@model IEnumerable<Team>
+ 
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Team info for all current teams based in Basketball Northern Ireland</h1>
+
+<p>To find out more inframtion on each payer click on the detail link attached!</p>
+
+
+
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+
+            <th scope="col">Team</th>
+            <th scope="col">League</th>
+            <th scope="col">Background Information</th>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+
+
+
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            }
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+
+                <td>@item.Name</td>
+                <td>@item.LeagueName</td>
+                <td>@item.Description</td>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <td><a asp-controller="Team" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Edit</a></td>
+                    <td><a asp-controller="Team" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Delete</a></td>
+                }
+            </tr>
+        </tbody>
+    }
+</table>

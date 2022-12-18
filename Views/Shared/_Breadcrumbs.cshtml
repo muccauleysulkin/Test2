@@ -1,0 +1,16 @@
+﻿@if (ViewContext.RouteData.Values["controller"].ToString().ToLower() != "home")
+{
+    <section class="section-box mb-4">
+        <div class="align-content-lg-start nav-breadcrums">
+            <div class="container">
+                <div class="breadcrumb">
+                    <ul>
+                        <li class="home">@Html.ActionLink("Home", "Index", "Home") </li>
+                        <li>@Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index")</li>
+@*                        <li>@Html.ActionLink(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["action"].ToString()) </li>
+*@                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}

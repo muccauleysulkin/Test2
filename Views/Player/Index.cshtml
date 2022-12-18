@@ -1,0 +1,104 @@
+﻿@using Test2.ViewModels;
+
+@model IEnumerable<Player>
+@*<partial name="_BreadCrumbs" model=@(new []{
+    ("/", "Home"),
+    ("/","Players")
+})/>*@
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Player stats for Northern Ireland Mens Division 1</h1>
+
+<p>Listed below are the player stats for all qualified players for the current year, the stats are based on a per game avergae</p>
+
+
+
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Team Name</th>
+            <th scope="col">Points</th>
+            <th scope="col">Rebounds</th>
+            <th scope="col">Assists</th>
+            <th scope="col">Blocks</th>
+            <th scope="col">Steals</th>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            }
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+
+                <td>@item.Name</td>
+                <td>@item.TeamName</td>
+                <td>@item.Points</td>
+                <td>@item.Rebounds</td>
+                <td>@item.Assists</td>
+                <td>@item.Blocks</td>
+                <td>@item.Steals</td>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+
+
+                    <td><a asp-controller="Player" asp-action="Edit" asp-route-id="@item.Player_id" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                    <td><a asp-controller="Player" asp-action="Delete" asp-route-id="@item.Player_id" class="btn btn-sm btn-outline-secondary">Delete</a></td>
+                }
+                
+
+            </tr>
+        </tbody>
+    }
+</table>
+
+
+
+@*
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">@item.Name.</p>
+                            <p class="card-text">@item.TeamName.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a type="btn btn-success" asp-controller="Player" asp-action="Detail" asp-route-id="@item.Player_id" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                                {
+
+                                    <a asp-controller="Player" asp-action="Edit" asp-route-id="@item.Player_id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a asp-controller="Player" asp-action="Delete" asp-route-id="@item.Player_id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                                }
+                                <small class="text-muted">@item.Rebounds</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>*@

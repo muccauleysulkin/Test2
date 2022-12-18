@@ -1,0 +1,51 @@
+﻿@using Test2.ViewModels;
+
+@model IEnumerable<League>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>League Tables for Northern Ireland</h1>
+
+<p>Below are a list of all leagues currently supported on the website as of now. Keep your eye out for more coming in the future!</p>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+
+            <th scope="col">League Name</th>
+            <th scope="col">League Description</th>
+            <th scope="col">Level</th>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            }
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+
+                <td>@item.Leaguename</td>
+                <td>@item.LeagueDescription</td>
+                <td>@item.Level</td>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <td><a asp-controller="League" asp-action="Edit" asp-route-id="@item.League_id" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                    <td><a asp-controller="League" asp-action="Delete" asp-route-id="@item.League_id" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                }
+            </tr>
+        </tbody>
+    }
+</table>
+
+<p>Below takes you to the leaguye table</p>
+<div class="btn-group">
+    <a class="btn btn-outline-warning" asp-area="" asp-controller="League" asp-action="Leaguetable">League Table</a>
+       </div>

@@ -1,0 +1,56 @@
+﻿@using Test2.ViewModels;
+
+@model IEnumerable<FixtureAndResult>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1>2021-2022 Fixtures and resulta for the mens premier league season</h1>
+
+<p>Currently there are only fixtures and results for the mens premier league hwever there will be more leagues added closer to the time which will also feature a new home page in this section to see the league options</p>
+
+
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Date Of Game</th>
+            <th scope="col">Home Team</th>
+            <th scope="col">Away Team</th>
+            <th scope="col">Home Score</th>
+            <th scope="col">Away Score</th>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            }
+            
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+
+                <td>@item.DatefGame</td>
+                <td>@item.Hometeam</td>
+                <td>@item.Awayteam</td>
+                <td>@item.Homescore</td>
+                <td>@item.Awayscore</td>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <td><a asp-controller="League" asp-action="Edit" asp-route-id="@item.Match_id" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                    <td><a asp-controller="League" asp-action="Delete" asp-route-id="@item.Match_id" class="btn btn-sm btn-outline-secondary">Delete</a></td>
+                }
+                >
+
+            </tr>
+        </tbody>
+    }
+</table>

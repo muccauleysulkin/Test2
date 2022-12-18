@@ -1,0 +1,32 @@
+﻿@using Test2.Data
+@model FixtureAndResult
+
+<h1>Are you sure you want to delete this team?</h1>
+
+<form method="post" asp-action="Delete" enctype="multipart/form-data">
+    @* <input type="hidden" value="AddressId" id="AddressId" />*@
+    <div class="form-group">
+        <label asp-for="Awayscore">Title</label>
+        <input asp-for="Awayteam" class="form-control" placeholder="Title">
+        <span asp-validation-for="Awayteam" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Hometeam">Description</label>
+        <input asp-for="Hometeam" class="form-control" placeholder="Description">
+        <span asp-validation-for="Homescore" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DatefGame">Description</label>
+        <input asp-for="DatefGame" class="form-control" placeholder="Description">
+        <span asp-validation-for="DatefGame" class="text-danger"></span>
+    </div>
+
+
+</form>
+<div class="form-group">
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Match_id" />
+        <input type="submit" value="Confirm" class="btn btn-danger float-right mt-3" />
+    </form>
+</div>
+

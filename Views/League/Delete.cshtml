@@ -1,0 +1,30 @@
+﻿@using Test2.Data
+@model League
+
+<h1>Are you sure you want to delete this team?</h1>
+
+<form method="post" asp-action="Delete">
+    @* <input type="hidden" value="AddressId" id="AddressId" />*@
+    <div class="form-group">
+        <label asp-for="Leaguename">Title</label>
+        <input asp-for="Leaguename" class="form-control" placeholder="Title">
+        <span asp-validation-for="Leaguename" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LeagueDescription">Description</label>
+        <input asp-for="LeagueDescription" class="form-control" placeholder="Description">
+        <span asp-validation-for="LeagueDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Leaguename">Description</label>
+        <input asp-for="Leaguename" class="form-control" placeholder="Description">
+        <span asp-validation-for="Leaguename" class="text-danger"></span>
+    </div>
+
+</form>
+<div class="form-group">
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="League_id" />
+        <input type="submit" value="Confirm" class="btn btn-danger float-right mt-3" />
+    </form>
+</div>

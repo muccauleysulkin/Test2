@@ -1,0 +1,45 @@
+﻿@using Test2.ViewModels
+@model CreateFixtureAndResultViewModel
+
+
+<h1>This form will Create a new Fixture or Result to be tracked, please ensure all the information is correct and relevant</h1>
+
+<form method="post" asp-action="Create">
+    <input type="hidden" id="BasketballNiId" name="BasketballNiId" asp-for="BasketballNiId" />
+    <div class="form-group">
+        <label asp-for="Hometeam">Home Team</label>
+        <input asp-for="Hometeam" class="form-control" placeholder="Enter Home Team">
+        <span asp-validation-for="Hometeam" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Homescore">Home Score</label>
+        <input asp-for="Homescore" class="form-control" placeholder="Enter Home Score">
+        <span asp-validation-for="Homescore" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Awayteam">Away Team</label>
+        <input asp-for="Awayteam" class="form-control" placeholder="Enter Away Team">
+        <span asp-validation-for="Awayteam" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Awayscore">Away score</label>
+        <input asp-for="Awayscore" class="form-control" placeholder="Enter Away Score">
+        <span asp-validation-for="Awayscore" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DatefGame">Date</label>
+        <input asp-for="DatefGame" class="form-control" placeholder="Enter Date">
+        <span asp-validation-for="DatefGame" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+@section Scripts
+    {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

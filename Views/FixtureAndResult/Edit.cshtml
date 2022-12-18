@@ -1,0 +1,45 @@
+﻿@using Test2.ViewModels
+@model EditFixtureAndResultViewModel
+
+<h1>This form will edit the existing information, please ensure all the information is correct and relevant</h1>
+
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" id="BasketballNiId" name="BasketballNiId" asp-for="BasketballNiId" />
+    <div class="form-group">
+        <label asp-for="Hometeam">HomeTeam</label>
+        <input asp-for="Hometeam" class="form-control" placeholder="Enter email">
+        <span asp-validation-for="Hometeam" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Homescore">Homescore</label>
+        <input asp-for="Homescore" class="form-control" placeholder="Enter email">
+        <span asp-validation-for="Homescore" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Awayteam">AwayTeam</label>
+        <input asp-for="Awayteam" class="form-control" placeholder="Enter email">
+        <span asp-validation-for="Awayteam" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Awayscore">Away score</label>
+        <input asp-for="Awayscore" class="form-control" placeholder="Enter email">
+        <span asp-validation-for="Awayscore" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DatefGame">Date</label>
+        <input asp-for="DatefGame" class="form-control" placeholder="Enter email">
+        <span asp-validation-for="DatefGame" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+@section Scripts
+    {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

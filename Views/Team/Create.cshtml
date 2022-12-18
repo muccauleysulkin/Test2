@@ -1,0 +1,41 @@
+﻿@using Test2.ViewModels
+@model CreateTeamViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*@Html.TextBoxFor(l => l.Name, new {title= "Hello, this is the field to enter your teams name"})*@
+<h1>This form will Create a new Team to be tracked, please ensure all the information is correct and relevant</h1>
+
+<form method="post" asp-action="Create">
+    
+    <input type="hidden" id="BasketballNiId" name="BasketballNiId" asp-for="BasketballNiId" /> 
+    <div class="form-group">
+        <label asp-for="Name">Team Name</label>
+        <input asp-for="Name" class="form-control" placeholder="Enter Team Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Team Descrption</label>
+        <input asp-for="Description" class="form-control" placeholder="Enter Team Descrption">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LeagueName">League Name</label>
+        <input asp-for="LeagueName" class="form-control" placeholder="Enter League Name">
+        <span asp-validation-for="LeagueName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts 
+    {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
